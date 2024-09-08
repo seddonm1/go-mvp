@@ -1,0 +1,1 @@
+curl -X POST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbHwwMmMwMTNiMDQ5M2Q0YTk3MWQ2OTU5ZmUiLCJleHAiOjE3MjU4MzYwMTd9.0WWvpb6R8nc-3h1jv8SxFGcxaSWjr0GaXrtDTxZM4ck" -k http://localhost:8090/v1/example/echo -d '{"name": " hello"}'

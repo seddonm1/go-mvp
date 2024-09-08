@@ -1,0 +1,124 @@
+{
+  "components": {
+    "schemas": {
+      "helloworldHelloReply": {
+        "properties": {
+          "hibpCases": {
+            "items": {
+              "$ref": "#/components/schemas/helloworldHibpCase"
+            },
+            "type": "array"
+          }
+        },
+        "title": "The response message containing the greetings",
+        "type": "object"
+      },
+      "helloworldHelloRequest": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "title": "The request message containing the user's name",
+        "type": "object"
+      },
+      "helloworldHibpCase": {
+        "description": "An HIBP Case.",
+        "example": {
+          "name": "Adobe"
+        },
+        "properties": {
+          "name": {
+            "description": "The UUID field.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "protobufAny": {
+        "additionalProperties": {},
+        "properties": {
+          "@type": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "rpcStatus": {
+        "properties": {
+          "code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "details": {
+            "items": {
+              "$ref": "#/components/schemas/protobufAny"
+            },
+            "type": "array"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "helloworld.proto",
+    "version": "version not set"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/v1/example/echo": {
+      "post": {
+        "operationId": "Greeter_SayHello",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/helloworldHelloRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-originalParamName": "body"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/helloworldHelloReply"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "Sends a greeting",
+        "tags": [
+          "Greeter"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Greeter"
+    }
+  ]
+}

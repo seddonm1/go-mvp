@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS identity_users;
+DROP TABLE IF EXISTS users;
